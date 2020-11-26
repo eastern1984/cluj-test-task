@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const Diagram = (props) => {
     const classes = useStyles();
-console.log(111, props.data);
+
     return (
        <div className={classes.root}>
            {props.data && loop.map(i => {
