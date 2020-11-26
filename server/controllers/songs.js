@@ -26,13 +26,13 @@ exports.collectData = async (req, res, next) => {
         const array = result.data.split(/\r?\n/);
         for (let k = 2; k < array.length; k++) {
             const songArray = array[k].split(',');
-            let song = await Song.findOne({ URL : songArray[4] });
+            let song = await Song.findOne({ URL : songArray[songArray.length - 1] });
             if (!song) {
                 song = new Song();
-                song.name = songArray[1];
-                song.artist = songArray[2];
-                song.streams = songArray[3];
-                song.URL = songArray[4];
+                song.name = (songArray.length > 5) ? songArray[1] + ',' + songArray[2] : songArray[1];
+                song.artist = songArray[songArray.length - 3];
+                song.streams = songArray[songArray.length - 2];
+                song.URL = songArray[songArray.length - 1];
                 song.weeks = [{ position: songArray[0], weekFriday: lastFriday.toISOString(), index: i }];
             } else {
                 song.weeks.push({ position: songArray[0], weekFriday: lastFriday.toISOString(), index: i });
