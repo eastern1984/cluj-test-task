@@ -1,4 +1,4 @@
-# cluj-test-task
+# cluj-test-task (4-5 hours)
 
 Task: Webapp that displays the positions over time of songs in the last 20 weekly Spotify charts.
 
